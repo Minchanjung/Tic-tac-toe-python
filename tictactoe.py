@@ -1,15 +1,19 @@
 game_board = {
-    1: " ", 2: " ", 3: " ", 
-    4: " ", 5: " ", 6: " ", 
-    7: " ", 8: " ", 9: " "
+    "1": " ", "2": " ", "3": " ", 
+    "4": " ", "5": " ", "6": " ", 
+    "7": " ", "8": " ", "9": " "
 }
 
+board_keys = []
+for key in game_board:
+    board_keys.append(key)
+
 def print_board(board):
-    print(board[1] + '|' + board[2] + '|' + board[3])
+    print(board["1"] + '|' + board["2"] + '|' + board["3"])
     print('-+-+-')
-    print(board[4] + '|' + board[5] + '|' + board[6])
+    print(board["4"] + '|' + board["5"] + '|' + board["6"])
     print('-+-+-')
-    print(board[7] + '|' + board[8] + '|' + board[9])
+    print(board["7"] + '|' + board["8"] + '|' + board["9"])
 
 #print(print_board(game_board))
 
@@ -28,6 +32,7 @@ def game():
         
         else:
             print("that place is already filled")
+            continue
 
         if count >= 5:
             if game_board[1] == game_board[2] == game_board[3] != " ": #top row win
@@ -42,7 +47,7 @@ def game():
                 print(marker + " has won")
                 break
 
-             elif game_board[7] == game_board[8] == game_board[9] != " ": #bottom row win
+            elif game_board[7] == game_board[8] == game_board[9] != " ": #bottom row win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
@@ -66,7 +71,7 @@ def game():
                 print(marker + " has won")
                 break
 
-             elif game_board[1] == game_board[5] == game_board[9] != " ": #first diagonal win
+            elif game_board[1] == game_board[5] == game_board[9] != " ": #first diagonal win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
@@ -78,4 +83,13 @@ def game():
                 print(marker + " has won")
                 break
 
-            
+        if count == 9:
+            print("\nGame Over\n")
+            print("it was a tie")
+
+        if marker == "X":
+            marker == "O"
+        else:
+            marker == "X"
+
+print(game())
