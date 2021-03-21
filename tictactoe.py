@@ -5,6 +5,7 @@ game_board = {
 }
 
 board_keys = []
+
 for key in game_board:
     board_keys.append(key)
 
@@ -15,9 +16,10 @@ def print_board(board):
     print('-+-+-')
     print(board["7"] + '|' + board["8"] + '|' + board["9"])
 
-#print(print_board(game_board))
+
 
 def game():
+
     marker = "X"
     count = 0
 
@@ -26,8 +28,9 @@ def game():
         print("its your turn, " + marker + " choose a position")
 
         move = input()
+
         if game_board[move] == " ":
-            game_board[move] == marker
+            game_board[move] = marker
             count += 1
         
         else:
@@ -35,49 +38,49 @@ def game():
             continue
 
         if count >= 5:
-            if game_board[1] == game_board[2] == game_board[3] != " ": #top row win
+            if game_board["1"] == game_board["2"] == game_board["3"] != " ": #top row win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
                 break
 
-            elif game_board[4] == game_board[5] == game_board[6] != " ": #middle row win
+            elif game_board["4"] == game_board["5"] == game_board["6"] != " ": #middle row win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
                 break
 
-            elif game_board[7] == game_board[8] == game_board[9] != " ": #bottom row win
+            elif game_board["7"] == game_board["8"] == game_board["9"] != " ": #bottom row win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
                 break
 
-            elif game_board[1] == game_board[4] == game_board[7] != " ": #first colunm win
+            elif game_board["1"] == game_board["4"] == game_board["7"] != " ": #first colunm win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
                 break
 
-            elif game_board[2] == game_board[5] == game_board[8] != " ": #second colunm win
+            elif game_board["2"] == game_board["5"] == game_board["8"] != " ": #second colunm win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
                 break
 
-            elif game_board[3] == game_board[6] == game_board[9] != " ": #third colunm win
+            elif game_board["3"] == game_board["6"] == game_board["9"] != " ": #third colunm win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
                 break
 
-            elif game_board[1] == game_board[5] == game_board[9] != " ": #first diagonal win
+            elif game_board["1"] == game_board["5"] == game_board["9"] != " ": #first diagonal win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
                 break
 
-            elif game_board[7] == game_board[5] == game_board[3] != " ": #second diagonal win
+            elif game_board["7"] == game_board["5"] == game_board["3"] != " ": #second diagonal win
                 print_board(game_board)
                 print("\nGame Over\n")
                 print(marker + " has won")
@@ -88,8 +91,16 @@ def game():
             print("it was a tie")
 
         if marker == "X":
-            marker == "O"
+            marker = "O"
         else:
-            marker == "X"
+            marker = "X"
 
-print(game())
+    restart = input("do you want to play again?(y/n)")
+    if restart == "y" or restart == "Y":
+        for key in board_keys:
+            board_keys[key] = " "
+
+        game()
+
+if __name__ == "__main__":
+    game()
